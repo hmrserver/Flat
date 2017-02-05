@@ -1,6 +1,6 @@
 		/* Login */
 $(document).ready(function () {
-    if(window.location.href.indexOf("index.php") != -1 && window.location.href.indexOf("index.php?") == -1 ) {
+    if((window.location.href.indexOf("index.php") != -1 && window.location.href.indexOf("index.php?") == -1 ) || $('input[name=ulogin]').length != false) {
 		
 		/* Login Elements */
 		$("div.main-content").attr('style', 'box-shadow: none;')//Remove unwanted Shadow effect
