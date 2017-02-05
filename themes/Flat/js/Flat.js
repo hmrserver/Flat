@@ -27,7 +27,7 @@ document.write("<b class='mmddyyyy'>" + month + "/" + day + "/" + year + "</b><b
 document.write("   |   <b>" + hours + ":" + minutes + " " + suffix + "</b>");
 
 /* Login */
-$(document).ready(function () {
+jQuery(function($){
 	if((window.location.href.indexOf("index.php") != -1 && window.location.href.indexOf("index.php?") == -1 ) || $('input[name=ulogin]').length != false) {
 		var username_text = $("div.bloc table tbody tr:first td:first").html().replace(':','');
 		var pass_text = $("div.bloc > form > table > tbody > tr:nth-child(2) > td:first").html().replace(':','');
