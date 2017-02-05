@@ -1,5 +1,6 @@
 		/* Login */
 $(document).ready(function () {
+
     if((window.location.href.indexOf("index.php") != -1 && window.location.href.indexOf("index.php?") == -1 ) || $('input[name=ulogin]').length != false) {
 		
 		/* Login Elements */
@@ -217,9 +218,19 @@ $('img').each(function() {
  $.sidebarMenu($('.menu'));
  $(document).ready(function () {
     if(window.location.href.indexOf("home.php?m=") > -1) {
- $(".menu").prepend('<div class="avatar-cover"><img src="themes/Flat/images/default_avatar.png"><span class="avatar-username"></span><span class="avatar-status"><i class="fa fa-circle"></i>Online</span></div>');
- $(".avatar-username").text($("li.treeview > a.user_menu_link span.username").text());
- }
+ $(".menu").prepend('<div class="avatar-cover"><span class="avatar-username"></span><span class="avatar-status"><i class="fa fa-circle"></i>Online</span><label class="edit_avatar"><i class="fa fa-camera"></i><input class="avatarinput" type="file" /></label><span id="remove_avatar"><i class="fa fa-trash"></i></span></div>');
+$(".avatar-username").text($("li.treeview > a.user_menu_link span.username").text());
+  if(localStorage.Avatar) {
+	  var img = new Image();                
+  img.src = localStorage.Avatar;
+
+  $(".avatar-cover").prepend(img);
+  $(".avatar-cover > img").attr('id', 'avatar');
+  } else {
+	  $(".menu .avatar-cover").prepend('<img id="avatar" src="themes/Flat/images/default_avatar.png">');
+  }
+  $("#avatar").attr('style', 'border-radius: 100%;width: 64px;height: 64px;');
+  }
  });
  var nodes = document.getElementById('submenu_0').getElementsByTagName('span');
 	for(var i=0; i<nodes.length; i++) {
@@ -234,3 +245,34 @@ $('img').each(function() {
 	$(".copied > a > span").css("padding", "");
 	});
 	//END//
+$(document).ready(function(){
+  //You might want to do if check to see if localstorage set for theImage here
+$('body').on('click', '#remove_avatar',function(){
+	localStorage.removeItem("Avatar");
+	$("#avatar").remove();
+	$(".menu .avatar-cover").prepend('<img id="avatar" src="themes/Flat/images/default_avatar.png">');
+  $("#avatar").attr('style', 'border-radius: 100%;width: 64px;height: 64px;');
+	
+});
+  $("body").on("change",".avatarinput",function(){
+      //Equivalent of getElementById
+      var fileInput = $(this)[0];//returns a HTML DOM object by putting the [0] since it's really an associative array.
+      var file = fileInput.files[0]; //there is only '1' file since they are not multiple type.
+
+      var reader = new FileReader();
+      reader.onload = function(e) {
+	   // Create a new image.
+           var img = new Image();
+
+           img.src = reader.result;
+           localStorage.Avatar = reader.result; //stores the image to localStorage
+           $("#avatar").remove();
+		   $(".avatar-cover").prepend(img);
+		   $(".avatar-cover > img").attr('id', 'avatar');
+       
+  $("#avatar").attr('style', 'border-radius: 100%;width: 64px;height: 64px;');
+  }
+	   
+       reader.readAsDataURL(file);//attempts to read the file in question.
+    });
+});
