@@ -222,13 +222,11 @@ jQuery(function($){
 		if ($("#wrapper").hasClass("wrapper-hidder")){
 			$(".menu-bg").removeClass("menu-hidder");
 			$("#wrapper").removeClass("wrapper-hidder");
-			$(".avatar-status").show();
 			$.cookie('menu-bg-options', "show", { expires: 365, path: '/' });
 		} 
 		else {
 			$(".menu-bg").addClass("menu-hidder");
 			$("#wrapper").addClass("wrapper-hidder");
-			$(".avatar-status").hide();
 			$.cookie('menu-bg-options', "hide", { expires: 365, path: '/' });
 		}
     });
@@ -236,11 +234,9 @@ jQuery(function($){
 	if($.cookie("menu-bg-options") == "show") {
 		$(".menu-bg").removeClass("menu-hidder");
 		$("#wrapper").removeClass("wrapper-hidder");
-		$(".avatar-status").show();
 	} else if($.cookie("menu-bg-options") == "hide") {
 		$(".menu-bg").addClass("menu-hidder");
 		$("#wrapper").addClass("wrapper-hidder");
-		$(".avatar-status").hide();
 	}
 		
 	$(".copied > a > span").css("background", "");
