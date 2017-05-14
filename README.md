@@ -1,6 +1,7 @@
 ![Flat Theme](Flat-banner.png?raw=true")
 ### Flat Theme is a Clean theme for Open Game Panel.
-
+There is another clone project for stable version that you need, including our official public opg logo, etc.. [HERE](https://github.com/HAN-105/FlatOPG)<br>
+If you want to talk with us, join our discord channel : https://discord.me/HMR
 
 ## For Installation Follow the steps below:
 
